@@ -1,233 +1,383 @@
-/* Общие стили и сброс */
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  color: #333;
+/* ---------- База ---------- */
+:root {
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #1f2328;
+  --muted: #5f6670;
+  --line: #e2e4e8;
+  --accent: #1b6fd1;
+  --accent-soft: #e8f1fc;
+  --dark: #1c1e22;
+  --radius: 10px;
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  display: flex;
-  flex-direction: column;
-  padding-left: 200px; /* Отступ для фиксированной навигации */
-}
-
-header, footer {
-  flex-shrink: 0;
-}
-
-/* Стили навигации */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 200px;
-  background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-  padding-top: 20px;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
-  width: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
 }
 
-nav ul li {
-  width: 100%;
-}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-nav ul li a {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  padding: 10px 15px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s, color 0.3s;
-}
+img { max-width: 100%; }
 
-nav ul li a:hover {
-  background-color: #007bff;
+/* Якоря не прячутся под липкое меню. */
+section[id] { scroll-margin-top: 64px; }
+
+/* ---------- Шапка ---------- */
+.hero {
+  background: var(--dark);
   color: #fff;
 }
 
-/* Стили для основного контента */
-main {
-  max-width: 800px;
+.hero-inner {
+  max-width: 880px;
   margin: 0 auto;
-  padding: 20px;
-  flex-grow: 1;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-photo {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.15);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.hero-role {
+  margin: 6px 0 0;
+  font-size: 19px;
+  color: #d7dbe0;
+}
+
+.hero-facts {
+  margin: 4px 0 18px;
+  color: #9aa1aa;
+}
+
+.contact-buttons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background: rgba(255,255,255,0.08);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover { background: #185fb3; }
+
+/* ---------- Меню ---------- */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.topnav::-webkit-scrollbar { display: none; }
+
+.topnav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 880px;
+  display: flex;
+  gap: 2px;
+}
+
+.topnav a {
+  display: block;
+  padding: 14px 10px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+
+.topnav a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.topnav a.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Секции ---------- */
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 20px 8px;
 }
 
 section {
-  margin-bottom: 40px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
 section h2 {
-  margin-top: 0;
-  font-size: 24px;
+  margin: 0 0 16px;
+  font-size: 23px;
+  line-height: 1.25;
 }
 
-/* Баннер */
-.banner {
-  background-color: #000;
-  color: #fff;
-  padding: 40px;
-  display: flex;
-  align-items: center;
+section p:first-child { margin-top: 0; }
+section p:last-child { margin-bottom: 0; }
+
+.section-lead {
+  margin: -8px 0 16px;
+  color: var(--muted);
 }
 
-.banner img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-
-.banner-text {
-  margin-left: 40px;
-}
-
-.banner-text h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.banner-text p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-/* Опыт работы */
+/* ---------- Опыт ---------- */
 .experience-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.experience-card {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.job {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
 }
 
-.experience-card h3 {
-  margin-top: 0;
+.job:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
-.experience-card a {
-  color: #007bff;
-  text-decoration: none;
-}
+.job:last-child { padding-bottom: 0; }
 
-.experience-card ul {
-  list-style: disc;
-  margin-left: 20px;
-}
-
-/* Навыки */
-.skills-container {
+.job-head {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: baseline;
+  gap: 4px 12px;
 }
 
-.skill-group {
-  flex: 1 1 300px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.job h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.job-role {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.job-period {
+  margin: 2px 0 10px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.job-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.job-list li { margin: 3px 0; }
+
+.job-list li.is-extra { display: none; }
+.job.is-open .job-list li.is-extra { display: list-item; }
+
+.job-more {
+  margin: 8px 0 0 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.job-more:hover { text-decoration: underline; }
+
+/* ---------- Игры ---------- */
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--text);
+  background: var(--card);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.game:hover {
+  text-decoration: none;
+  border-color: #c9cdd3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.game img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--bg);
+}
+
+.game-body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 12px;
+}
+
+.game-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.game-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.game-meta .fa-star { color: #e0a400; }
+
+/* ---------- Инструменты ---------- */
+.tools-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.tool:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+
+.tool-title {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tool-stack {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.tool-text { font-size: 15px; }
+
+/* ---------- Навыки ---------- */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .skill-group h3 {
-  margin-top: 0;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  margin: 0 0 8px;
+  font-size: 17px;
 }
 
-.skill-group ul {
+.tags {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags li {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg);
+  font-size: 14px;
+}
+
+/* ---------- Контакты ---------- */
+.contact-list {
+  list-style: none;
+  margin: 12px 0 0;
   padding: 0;
 }
 
-.skill-group ul li {
-  padding: 5px 0;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 5px;
+.contact-list li { margin: 6px 0; }
+
+.contact-list i {
+  width: 20px;
+  text-align: center;
+  color: var(--muted);
+  margin-right: 6px;
 }
 
-/* Портфолио */
-.portfolio-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between; /* или flex-start / center, по вкусу */
-}
-
-.portfolio-card {
-  flex: 1 1 calc(33% - 20px);  /* «базовая» ширина */
-  max-width: calc(33% - 20px); /* чтобы карточка не растягивалась */
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-5px);
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: 200px;        /* Зафиксировали высоту в 200px */
-  object-fit: cover;    /* Обрезает картинку, сохраняя пропорции */
-  transition: transform 0.3s ease;
-}
-
-
-.portfolio-card:hover img {
-  transform: scale(1.05);
-}
-
-.portfolio-card .card-content {
-  padding: 15px;
-}
-
-.portfolio-card h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
-
-.portfolio-card .rating,
-.portfolio-card .downloads {
+footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 8px 20px 32px;
+  text-align: center;
   font-size: 14px;
-  margin-bottom: 5px;
 }
 
-.portfolio-card a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Playable-секция */
+/* ---------- Playable-секция ---------- */
 #playable .playable-intro {
   margin-top: 0;
 }
@@ -236,7 +386,7 @@ section h2 {
 .playable-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
 }
 
 .playable-card {
@@ -256,15 +406,10 @@ section h2 {
   flex-grow: 1;
 }
 
-#playable .playable-lead a {
-  color: #007bff;
-  text-decoration: none;
-}
-
 .playable-stage {
   display: flex;
   justify-content: center;
-  margin: 20px 0 12px;
+  margin: 12px 0 10px;
 }
 
 /* Вертикальная рамка под портретный креатив: до 340x604 на десктопе,
@@ -274,10 +419,9 @@ section h2 {
   width: 100%;
   max-width: 340px;
   aspect-ratio: 9 / 16;
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
   background: #0f1b26;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
 .playable-frame iframe {
@@ -329,8 +473,7 @@ section h2 {
   padding-left: 4px;
   font-size: 24px;
   color: #fff;
-  background: linear-gradient(180deg, #a2d20b, #86c206);
-  box-shadow: 0 6px 16px rgba(134,194,6,0.35);
+  background: #8cc507;
   transition: transform 0.2s ease;
 }
 
@@ -349,15 +492,9 @@ section h2 {
   font-size: 14px;
 }
 
-.playable-links a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
+.playable-links a { font-weight: 600; }
 
-.playable-note {
-  color: #888;
-}
+.playable-note { color: var(--muted); }
 
 /* Moon Pioneer — заглушка в палитре уровня: холодный серый грунт
    и оранжевый акцент ракеты. */
@@ -376,6 +513,50 @@ section h2 {
 }
 
 .playable-card--moon .playable-poster-play {
-  background: linear-gradient(180deg, #ff9a3c, #f27a1a);
-  box-shadow: 0 6px 16px rgba(242,122,26,0.35);
+  background: #f27a1a;
+}
+
+/* ---------- Телефон ---------- */
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 16px;
+  }
+
+  .hero-photo {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero h1 { font-size: 27px; }
+  .hero-role { font-size: 17px; }
+
+  .btn { padding: 8px 12px; font-size: 14px; }
+
+  main { padding: 16px 12px 4px; }
+
+  section {
+    padding: 18px 16px;
+    margin-bottom: 16px;
+  }
+
+  section h2 { font-size: 21px; }
+
+  .topnav ul { padding: 0 4px; }
+  .topnav a { padding: 12px 9px; font-size: 14px; }
+
+  .portfolio-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .game-body { padding: 8px 10px 10px; }
+  .game-meta { font-size: 13px; }
+
+  /* На телефоне реклама на всю ширину колонки, но не выше экрана. */
+  .playable-frame { max-width: min(100%, calc((100vh - 140px) * 9 / 16)); }
 }

@@ -3,44 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Павел - Портфолио QA</title>
+  <title>Павел Бадмаев — QA Engineer, мобильные игры</title>
+  <meta name="description" content="QA engineer в мобильном геймдеве с 2021 года: Stereo 7, Playphoria, Finiki Games. Опыт, игры в релизе, playable-реклама и свои инструменты для тестирования.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Павел Бадмаев — QA Engineer, мобильные игры">
+  <meta property="og:description" content="Тестирую мобильные игры с 2021 года. Опыт, игры в релизе, playable-реклама и свои инструменты.">
+  <meta property="og:url" content="https://pablizho.github.io/">
+  <meta property="og:image" content="https://pablizho.github.io/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-<body>
-  <header>
-    <div class="banner">
-      <img src="Photo.jpg" alt="Ваше фото">
-      <div class="banner-text">
-        <h1 data-lang-content="bannerTitle"></h1>
-        <p data-lang-content="bannerSubtitle"></p>
-        <p data-lang-content="bannerExperience"></p>
-        <div class="contact-info">
-          <p><i class="fas fa-envelope"></i> pavelsmirnov98@gmail.com</p>
-          <p><i class="fas fa-phone"></i> +7 (953) 807-53-71</p>
-          <p><i class="fas fa-map-marker-alt"></i> Новосибирск, Россия</p>
-          <p><a href="https://t.me/Zogang" target="_blank"><i class="fab fa-telegram"></i>@Zogang</a></p>
-        </div>
+<body id="top">
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="hero-photo" src="photo-360.jpg" width="160" height="160" alt="Павел Бадмаев">
+      <div class="hero-text">
+        <h1>Павел Бадмаев</h1>
+        <p class="hero-role">QA Engineer · мобильные игры</p>
+        <p class="hero-facts"><span data-career>Опыт в QA с 2021 года</span> · Новосибирск</p>
+        <ul class="contact-buttons">
+          <li><a class="btn btn-primary" href="https://t.me/Zogang" target="_blank" rel="noopener"><i class="fab fa-telegram-plane" aria-hidden="true"></i> Telegram</a></li>
+          <li><a class="btn" href="mailto:pavelsmirnov98@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> pavelsmirnov98@gmail.com</a></li>
+          <li><a class="btn" href="https://github.com/pablizho" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+        </ul>
       </div>
-    </div>        
+    </div>
   </header>
-    
-  <nav>
+
+  <nav class="topnav" aria-label="Разделы">
     <ul>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#experience">Опыт</a></li>
+      <li><a href="#portfolio">Игры</a></li>
       <li><a href="#playable">Playable</a></li>
-      <li><a href="#about" data-lang-content="aboutMe">Обо мне</a></li>
-      <li><a href="#experience" data-lang-content="experience">Опыт работы</a></li>
-      <li><a href="#skills" data-lang-content="skills">Навыки</a></li>
-      <li><a href="#portfolio" data-lang-content="portfolio">Портфолио</a></li>
-      <li><a href="#contact" data-lang-content="contact">Контакты</a></li>
+      <li><a href="#tools">Инструменты</a></li>
+      <li><a href="#skills">Навыки</a></li>
+      <li><a href="#contact">Контакты</a></li>
     </ul>
   </nav>
 
   <main>
-    <!-- Playable-реклама. Секция статична: app.js её не трогает, поэтому
-         добавление не может уронить рендер остальных блоков. -->
+    <section id="about">
+      <h2>Обо мне</h2>
+      <div data-lang-content="bioContent"></div>
+    </section>
+
+    <section id="experience">
+      <h2>Опыт работы</h2>
+      <div class="experience-container"></div>
+    </section>
+
+    <section id="portfolio">
+      <h2>Игры, которые я тестировал</h2>
+      <div class="portfolio-container"></div>
+    </section>
+
+    <!-- Playable-реклама. Секция статична: app.js её не трогает. -->
     <section id="playable">
-      <h2>Playable ads</h2>
+      <h2>Playable-реклама</h2>
       <p class="playable-intro">
         Интерактивные рекламы для игр, которые я тестировал: HTML5, three.js / WebGL, портретная
         ориентация, каждая — один самодостаточный файл, ни одного внешнего запроса во время игры.
@@ -133,38 +155,35 @@
       })();
     </script>
 
-    <section id="about">
-      <h2 data-lang-content="aboutMe"></h2>
-      <div data-lang-content="bioContent"></div>
-    </section>
-
-    <section id="experience">
-      <h2 data-lang-content="experience"></h2>
-      <div class="experience-container"></div>
+    <section id="tools">
+      <h2>Свои инструменты</h2>
+      <p class="section-lead">Написал для своей работы в тестировании, всё лежит на GitHub.</p>
+      <div class="tools-container"></div>
     </section>
 
     <section id="skills">
-      <h2 data-lang-content="skills"></h2>
+      <h2>Навыки</h2>
       <div class="skills-container"></div>
     </section>
 
-    <section id="portfolio">
-      <h2 data-lang-content="portfolio"></h2>
-      <div class="portfolio-container"></div>
-    </section>
-
     <section id="contact">
-      <h2 data-lang-content="contact"></h2>
-      <div data-lang-content="contactContent"></div>
-      <!-- Форма обратной связи можно добавить по необходимости -->
+      <h2>Контакты</h2>
+      <p>Открыт к позициям в игровом и продуктовом QA — удалённо или с релокацией. Тестовое задание — не проблема.</p>
+      <ul class="contact-list">
+        <li><i class="fab fa-telegram-plane" aria-hidden="true"></i> <a href="https://t.me/Zogang" target="_blank" rel="noopener">@Zogang</a></li>
+        <li><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:pavelsmirnov98@gmail.com">pavelsmirnov98@gmail.com</a></li>
+        <li><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+79538075371">+7 (953) 807-53-71</a></li>
+        <li><i class="fab fa-github" aria-hidden="true"></i> <a href="https://github.com/pablizho" target="_blank" rel="noopener">github.com/pablizho</a></li>
+        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Новосибирск, Россия</li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <!-- Копирайт, ссылки на соцсети и т.п. -->
+    <a href="#top" class="to-top">Наверх ↑</a>
   </footer>
 
   <script src="content.js"></script>
-  <script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ const content = {
     skills: 'Навыки',
     portfolio: 'Портфолио',
     contact: 'Контакты',
-    bioContent: `<p>Привет! Меня зовут Павел. Я QA engineer с четырехлетним опытом работы в мобильной игровой индустрии.</p>
+    bioContent: `<p>Привет! Меня зовут Павел. Я QA engineer, с 2021 года тестирую мобильные игры.</p>
                  <p>В последние годы я работал в студиях Stereo 7, Playphoria и Finiki Games, где приобрёл опыт работы с Git, Unity и автоматизацией тестирования. Моя специализация – hyper/hybrid casual и tower defense, а также я участвовал в создании мобильных игр на Unity и занимался частичным менеджментом проектов.</p>
                  <p>Образование началось со школы, продолжилось в строительном колледже, а затем курсы по тестированию от GeekBrains позволили систематизировать знания в области QA. Сейчас развиваюсь в ручном и автоматизированном тестировании, а также в разработке.</p>`,
     experienceContent: [
@@ -14,7 +14,7 @@ const content = {
         company: 'Finiki Games',
         url: 'https://finiki.games/',
         position: 'QA Engineer',
-        period: 'Сентябрь 2024 — по настоящее время',
+        from: '2024-09',
         responsibilities: [
           'Тестирование Match-3 RPG (<a href="https://play.google.com/store/apps/details?id=com.finiki.ac.puzzlerpg" target="_blank">PuzzlerPG</a>)',
           'Тестирование клиент-серверной архитектуры: проверка работы как на серверной, так и на клиентской стороне',
@@ -30,7 +30,7 @@ const content = {
         company: 'Playphoria',
         url: 'https://www.playphoria.io/',
         position: 'QA',
-        period: 'Декабрь 2021 — Август 2024 (2 года 9 месяцев)',
+        from: '2021-12', to: '2024-08',
         responsibilities: [
           'Тестирование мобильных игр на Android/iOS/Unity',
           'Тестирование готовых игр, прототипов и внутренней платформы компании',
@@ -54,7 +54,7 @@ const content = {
         company: 'Stereo 7',
         url: 'https://www.stereo7.com/',
         position: 'QA engineer',
-        period: 'Февраль 2021 — Декабрь 2021 (11 месяцев)',
+        from: '2021-02', to: '2021-12',
         responsibilities: [
           'Поиск и документирование багов в новых фичах билда',
           'Регрессионное, интеграционное и функциональное тестирование',
@@ -71,7 +71,7 @@ const content = {
       {
         company: 'VK Testers',
         position: 'Тестировщик',
-        period: 'Декабрь 2020 — Январь 2021 (2 месяца)',
+        from: '2020-12', to: '2021-01',
         responsibilities: [
           'Тестирование приложений ВКонтакте'
         ]
@@ -79,7 +79,7 @@ const content = {
       {
         company: 'Utest',
         position: 'Краудтестер',
-        period: 'Июнь 2020 — Ноябрь 2020 (6 месяцев)',
+        from: '2020-06', to: '2020-11',
         responsibilities: [
           'Написание тест-кейсов',
           'Составление баг-репортов'
@@ -188,8 +188,49 @@ const content = {
       </ul>
     `,
     bannerTitle: 'Павел Бадмаев',
-    bannerSubtitle: 'QA GameDev',
-    bannerExperience: 'Опыт работы 4 года 10 месяцев'
+    bannerSubtitle: 'QA Engineer · мобильные игры',
+    // Стаж в шапке считается от этой даты автоматически (app.js).
+    careerStart: '2021-02',
+
+    // Свои инструменты и проекты с GitHub.
+    toolsContent: [
+      {
+        title: 'adb-bot',
+        stack: 'Python, OpenCV, PyAV',
+        link: 'https://github.com/pablizho/adb-bot',
+        text: 'Один раз записать проход теста на Android и воспроизводить его на любом устройстве. Если шаг упал, скриншот и описание шага сохраняются сами — готовое вложение к баг-репорту.'
+      },
+      {
+        title: 'screen-recorder',
+        stack: 'Python, Win32 GDI, FFmpeg',
+        link: 'https://github.com/pablizho/screen-recorder',
+        text: 'Запись экрана с настоящим курсором в кадре. Стандартный захват Windows курсор не пишет, а видео бага без видимого клика мало что доказывает.'
+      },
+      {
+        title: 'video-compressor',
+        stack: 'Batch, FFmpeg',
+        link: 'https://github.com/pablizho/video-compressor',
+        text: 'Пакетно сжимает папку записей, чтобы они влезали в тикет. Аппаратное кодирование (NVENC / AMF / QSV) определяется пробой, а не по названию видеокарты.'
+      },
+      {
+        title: 'factorio-cheat-panel',
+        stack: 'Lua',
+        link: 'https://github.com/pablizho/factorio-cheat-panel',
+        text: '60+ читов в интерфейсе вместо консольных команд. В подсказке каждой кнопки — вызов API, который она выполняет.'
+      },
+      {
+        title: 'Sorting Belt',
+        stack: 'C#, Unity',
+        link: 'https://github.com/pablizho/Sorting-belt',
+        text: 'Прототип 2D-аркады на Unity: сортировка предметов на конвейере на время.'
+      },
+      {
+        title: 'multiplayer-game',
+        stack: 'FastAPI, PostgreSQL, WebSocket',
+        link: 'https://github.com/pablizho/multiplayer-game',
+        text: 'Игра в кости с аккаунтами, комнатами и обновлениями в реальном времени. Учебный проект, известные баги описаны в README.'
+      }
+    ]
   },
   // Аналогичная структура для других языков (en, zh и т.д.) при необходимости
 };
