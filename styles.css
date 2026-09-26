@@ -228,8 +228,32 @@ section h2 {
 }
 
 /* Playable-секция */
+#playable .playable-intro {
+  margin-top: 0;
+}
+
+/* Две рекламы рядом; на узком экране — одна под другой. */
+.playable-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.playable-card {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.playable-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
 #playable .playable-lead {
   margin-top: 0;
+  flex-grow: 1;
 }
 
 #playable .playable-lead a {
@@ -243,12 +267,12 @@ section h2 {
   margin: 20px 0 12px;
 }
 
-/* Вертикальная рамка под портретный креатив: 360x640 на десктопе,
+/* Вертикальная рамка под портретный креатив: до 340x604 на десктопе,
    по ширине колонки — на узком экране. */
 .playable-frame {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 340px;
   aspect-ratio: 9 / 16;
   border-radius: 18px;
   overflow: hidden;
@@ -333,4 +357,25 @@ section h2 {
 
 .playable-note {
   color: #888;
+}
+
+/* Moon Pioneer — заглушка в палитре уровня: холодный серый грунт
+   и оранжевый акцент ракеты. */
+.playable-card--moon .playable-frame {
+  background: #3a4854;
+}
+
+.playable-card--moon .playable-poster {
+  color: #e3ebf1;
+  background: linear-gradient(180deg, #637986 0%, #445664 60%, #2c3842 100%);
+}
+
+.playable-card--moon .playable-poster-sub,
+.playable-card--moon .playable-poster-hint {
+  color: #b9c8d3;
+}
+
+.playable-card--moon .playable-poster-play {
+  background: linear-gradient(180deg, #ff9a3c, #f27a1a);
+  box-shadow: 0 6px 16px rgba(242,122,26,0.35);
 }

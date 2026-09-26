@@ -40,39 +40,92 @@
     <!-- Playable-реклама. Секция статична: app.js её не трогает, поэтому
          добавление не может уронить рендер остальных блоков. -->
     <section id="playable">
-      <h2>Playable ad — Water Power</h2>
-      <p class="playable-lead">
-        Интерактивная реклама для
-        <a href="https://play.google.com/store/apps/details?id=com.mountaincreekgames.waterpower" target="_blank">Water Power</a>:
-        HTML5, three.js / WebGL, портретная ориентация, один самодостаточный файл — ни одного
-        внешнего запроса во время игры. Ставьте водяные колёса, расширяйте реку, стройте ГЭС.
+      <h2>Playable ads</h2>
+      <p class="playable-intro">
+        Интерактивные рекламы для игр, которые я тестировал: HTML5, three.js / WebGL, портретная
+        ориентация, каждая — один самодостаточный файл, ни одного внешнего запроса во время игры.
       </p>
-      <div class="playable-stage">
-        <div class="playable-frame" id="playableFrame">
-          <button class="playable-poster" type="button" id="playableStart" aria-label="Запустить playable Water Power">
-            <span class="playable-poster-title">Water Power</span>
-            <span class="playable-poster-sub">Playable ad · three.js · портрет</span>
-            <span class="playable-poster-play" aria-hidden="true">▶</span>
-            <span class="playable-poster-hint">Нажмите, чтобы играть</span>
-          </button>
-        </div>
+      <div class="playable-grid">
+        <article class="playable-card playable-card--water">
+          <h3>Water Power</h3>
+          <p class="playable-lead">
+            Реклама для
+            <a href="https://play.google.com/store/apps/details?id=com.mountaincreekgames.waterpower" target="_blank">Water Power</a>.
+            Ставьте водяные колёса, расширяйте реку, стройте ГЭС.
+          </p>
+          <div class="playable-stage">
+            <div class="playable-frame" data-playable-frame>
+              <button class="playable-poster" type="button"
+                      data-playable-src="projects/water-power/index.html"
+                      data-playable-title="Water Power — playable ad"
+                      aria-label="Запустить playable Water Power">
+                <span class="playable-poster-title">Water Power</span>
+                <span class="playable-poster-sub">Playable ad · three.js · портрет</span>
+                <span class="playable-poster-play" aria-hidden="true">▶</span>
+                <span class="playable-poster-hint">Нажмите, чтобы играть</span>
+              </button>
+            </div>
+          </div>
+          <p class="playable-links">
+            <a href="projects/water-power/" target="_blank">Открыть на весь экран</a>
+            <span class="playable-note">— 1,7 МБ, грузится только по нажатию</span>
+          </p>
+        </article>
+
+        <article class="playable-card playable-card--moon">
+          <h3>Moon Pioneer</h3>
+          <p class="playable-lead">
+            Реклама для
+            <a href="https://play.google.com/store/apps/details?id=com.norwichsidegames.tothemoon" target="_blank">Moon Pioneer</a>.
+            Первый уровень игры: посадка ракеты, нефтекачка, завод пластика, лаборатория и взлёт —
+            модели, цены и экономика взяты из оригинала.
+          </p>
+          <div class="playable-stage">
+            <div class="playable-frame" data-playable-frame>
+              <button class="playable-poster" type="button"
+                      data-playable-src="projects/moon-pioneer/index.html"
+                      data-playable-title="Moon Pioneer — playable ad"
+                      aria-label="Запустить playable Moon Pioneer">
+                <span class="playable-poster-title">Moon Pioneer</span>
+                <span class="playable-poster-sub">Playable ad · three.js · портрет</span>
+                <span class="playable-poster-play" aria-hidden="true">▶</span>
+                <span class="playable-poster-hint">Нажмите, чтобы играть</span>
+              </button>
+            </div>
+          </div>
+          <p class="playable-links">
+            <a href="projects/moon-pioneer/" target="_blank">Открыть на весь экран</a>
+            <span class="playable-note">— 1 МБ, грузится только по нажатию</span>
+          </p>
+        </article>
       </div>
-      <p class="playable-links">
-        <a href="projects/water-power/" target="_blank">Открыть на весь экран</a>
-        <span class="playable-note">— 1,7 МБ, грузится только по нажатию</span>
-      </p>
     </section>
     <script>
       // Клик-ту-плей: iframe создаётся по нажатию, чтобы главная страница не
-      // тянула 1,7 МБ и не запускала WebGL со звуком у того, кто просто листает.
+      // тянула мегабайты и не запускала WebGL со звуком у того, кто просто листает.
+      // Играет одна реклама за раз: запуск второй возвращает первой заглушку,
+      // чтобы на телефоне не жили два WebGL-контекста и два звука.
       (function () {
-        var btn = document.getElementById('playableStart');
-        if (!btn) return;
-        btn.addEventListener('click', function () {
-          var stage = document.getElementById('playableFrame');
+        var frames = document.querySelectorAll('[data-playable-frame]');
+        var posters = [];
+        for (var i = 0; i < frames.length; i++) posters.push(frames[i].innerHTML);
+
+        function reset(except) {
+          for (var i = 0; i < frames.length; i++) {
+            if (frames[i] !== except && frames[i].querySelector('iframe')) {
+              frames[i].innerHTML = posters[i];
+            }
+          }
+        }
+
+        document.addEventListener('click', function (e) {
+          var btn = e.target.closest && e.target.closest('[data-playable-src]');
+          if (!btn) return;
+          var stage = btn.closest('[data-playable-frame]');
+          reset(stage);
           var frame = document.createElement('iframe');
-          frame.src = 'projects/water-power/index.html';
-          frame.title = 'Water Power — playable ad';
+          frame.src = btn.getAttribute('data-playable-src');
+          frame.title = btn.getAttribute('data-playable-title');
           frame.allow = 'autoplay; fullscreen';
           stage.innerHTML = '';
           stage.appendChild(frame);
